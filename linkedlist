@@ -1,4 +1,4 @@
-/*#include<iostream>
+#include<iostream>
 #include<string>
 using namespace std;
 
@@ -26,45 +26,6 @@ class List{
 		return 0;
 	}
 	
-};
-int main()
-{
-	List l1;
-	l1.insert(5);
-
-	
-	return 0;
-}
-*/
-
-#include <iostream>
-
-using namespace std;
-
-
-struct Node {
-    int data;
-    Node* next;
-};
-
-class LinkedList {
-private:
-    Node* head;
-
-public:
-   
-    LinkedList() {
-        head = nullptr;
-    }
-
-  
-    void insertAtBeginning(int value) {
-        Node* newNode = new Node;
-        newNode->data = value;
-        newNode->next = head;
-        head = newNode;
-    }
-
     void deleteNode(int value) {
         Node* current = head;
         Node* prev = nullptr;
@@ -74,21 +35,6 @@ public:
             current = current->next;
         }
 
-        if (current == nullptr) {
-            cout << "Node with value " << value << " not found.\n";
-            return;
-        }
-
-        if (prev == nullptr) {
-            head = current->next;
-        } else {
-            prev->next = current->next;
-        }
-
-        delete current;
-    }
-
- 
     void display() {
         Node* current = head;
         while (current != nullptr) {
@@ -98,34 +44,14 @@ public:
         cout << endl;
     }
 
-
-    ~LinkedList() {
-        Node* current = head;
-        while (current != nullptr) {
-            Node* next = current->next;
-            delete current;
-            current = next;
-        }
-    }
+	
 };
-
-int main() {
-    LinkedList list;
-
- 
-    list.insertAtBeginning(3);
-    list.insertAtBeginning(7);
-    list.insertAtBeginning(9);
-    list.insertAtBeginning(5);
-
-    cout << "Initial list: ";
-    list.display();
-
-
-    list.deleteNode(7);
-
-    cout << "List after deleting node with value 7: ";
-    list.display();
-
-    return 0;
+int main()
+{
+	List l1;
+	l1.insert(5);
+	l1.delete(5);
+	l1.display();
+	
+	return 0;
 }
